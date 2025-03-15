@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373036_Vika</title>
+    <style>
+        body {
+            background-color: #8b0000;
+        }
+        .box {
+            position: relative;
+            width: 190px;
+            height: 200px;
+            padding: 10px;
+            color: white;
+            background-color: #730f11;
+        }
+        .corner {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-repeat: no-repeat;
+        }
+        .top-left {
+            top: 0;
+            left: 0;
+            background-image: url('img/box_tl.gif');
+        }
+        .top-right {
+            top: 0;
+            right: 0;
+            background-image: url('img/box_tr.gif');
+        }
+        .bottom-left {
+            bottom: 0;
+            left: 0;
+            background-image: url('img/box_bl.gif');
+        }
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+            background-image: url('img/box_br.gif');
+        }
+        .side {
+            position: absolute;
+            background-repeat: repeat;
+        }
+        .left {
+            top: 10px;
+            bottom: 10px;
+            left: 0;
+            width: 15px;
+            background-image: url('img/box_l.gif');
+            background-repeat: repeat-y;
+        }
+        .right {
+            top: 10px;
+            bottom: 10px;
+            right: 0;
+            width: 15px;
+            background-image: url('img/box_r.gif');
+            background-repeat: repeat-y;
+        }
+        .top {
+            top: 0;
+            left: 10px;
+            right: 15px;
+            height: 15px;
+            background-image: url('img/box_t.gif');
+            background-repeat: repeat-x;
+        }
+        .bottom {
+            bottom: 0;
+            left: 10px;
+            right: 15px;
+            height: 15px;
+            background-image: url('img/box_b.gif');
+            background-repeat: repeat-x;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 10px;
+            background-color: #730f11;
+        }
+        a {
+            color: orange;
+            text-decoration: none;
+        }
+        a:hover {
+            color: green;
+            text-decoration: underline;
+        }
+        .link-wrapper {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <div class="side left"></div>
+        <div class="side right"></div>
+        <div class="side top"></div>
+        <div class="side bottom"></div>
+
+        <div class="content">
+            <h3>12.02.2011</h3>
+            <p>
+                Satu per satu para pesaing Manchester United mulai menunjukkan tanda-tanda "menyerah". Kini tinggal..
+            </p>
+            <div class="link-wrapper">
+                <a href="#">more</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
