@@ -1,0 +1,14 @@
+.container {
+    background-color: #AA0000; 
+    width: 203px;
+    color: white;
+    padding: 10px 20px;
+    font-family: serif;
+    font-size: 24px;
+}
+
+.container span {
+    color: black;
+    font-weight: bold;
+    vertical-align: sub;
+}
