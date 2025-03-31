@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373036_Vika</title>
+    <script src="Soal_4.js" defer></script>
+    <link rel="stylesheet" href="soal_4.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <td align="right"; style="color: blue;"><b>Input :</b></td>
+            <td><input type="text" id="inputValue"></td>
+        </tr>
+        <tr>
+            <td align="right"; style="color: blue;"><b>Output :</b></td>
+            <td><input type="text" id="outputValue" readonly></td>
+        </tr>
+        <tr align="center">
+            <td colspan="2">
+                <select id="conversionType">
+                    <option value="decimal-binary">Decimal ke Biner</option>
+                    <option value="binary-decimal">Biner ke Decimal</option>
+                </select>
+            </td>
+        </tr>
+        <tr align="center">
+            <td colspan="2" class="button-container">
+                <button onclick="convert()">PROSES</button>
+                <button onclick="resetForm()">RESET</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

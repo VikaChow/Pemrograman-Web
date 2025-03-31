@@ -1,0 +1,22 @@
+table {
+    border: 1px solid black;
+    padding: 5px;
+    background: white;
+    width: 300px;
+}
+
+td {
+    border: 1px solid black;
+}
+input, select, button {
+    width: 150px;
+    padding: 5px;
+    margin-top: 5px;
+}
+.button-container {
+    align-items: center;
+}
+.button-container button {
+    width: 80px;
+    color: blue;
+}
