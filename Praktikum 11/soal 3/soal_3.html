@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373036-Vika</title>
+    <link rel="stylesheet" href="soal_3.js">
+
+</head>
+<body>
+    <table>
+        <tr>
+            <td><label for="dataInput">Data</label></td>
+            <td><input type="number" id="dataInput" /></td>
+        <tr>
+            <td>
+                <button onclick="addData()">Add</button>
+            </td>
+            <td>
+                <select id="operationSelect" onchange="performOperation()">
+                    <option value="">Pilih Operasi</option>
+                    <option value="display">Display</option>
+                    <option value="count">Count</option>
+                    <option value="sum">Sum</option>
+                    <option value="average">Average</option>
+                    <option value="max">Max</option>
+                    <option value="min">Min</option>
+                    <option value="odd">Ganjil</option>
+                    <option value="even">Genap</option>
+                    <option value="clear">Hapus</option>
+                </select>
+              </td>
+        </tr>
+        </tr>
+        <tr>
+            <td><label for="result">Hasil</label></td>
+            <td colspan="3"><input type="text" id="result" readonly /></td>
+        </tr>
+    </table>
+    <script src="Soal_3.js"></script>
+</body>
+</html>

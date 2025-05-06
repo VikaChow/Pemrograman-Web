@@ -1,0 +1,16 @@
+table {
+    border-collapse: collapse;
+    width: 50%;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+.row0 { background-color: #32ff92a8; }
+.row1 { background-color: #BFDFFF; }
+.row2 { background-color: #F4C7AB; }
+.row3 { background-color: #BFDFFF; }
+.row4 { background-color: #F4C7AB; }
+.row5 { background-color: #BFDFFF; }
+.highlight { background-color: #CCFFAA !important; }
