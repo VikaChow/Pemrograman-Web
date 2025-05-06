@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowery</title>
+
+    <link rel="shortcut icon" href="/assets/images/logo/Logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <div class="header-main">
+            <div class="container">
+                <a href="/Home.html" class="header-logo">
+                    <img src="/assets/images/logo/Logo.png" alt="" width="120" height="36">
+                </a>
+
+                <div class="header-search-container">
+                    <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
+                    <button class="search-btn">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </button>
+                </div>
+
+                <div class="header-user-actions">
+                    <div class="profile-dropdown">
+                      <button class="action-btn">
+                        <ion-icon name="person-outline"></ion-icon>
+                      </button>
+                      <div class="dropdown-menu">
+                        <p class="user-name">Hi, Vika!</p>
+                        <a href="Profil.html">View Profile</a>
+                        <a href="#">My Orders</a>
+                        <a href="#">Shipping Address</a>
+                        <a href="#">Review</a>
+                        <a href="#">Wishlist</a>
+                        <a href="/Login.html">Log Out</a>
+                      </div>
+                    </div>
+
+                    <div class="cart-dropdown-container">
+                        <button class="action-btn">
+                            <ion-icon name="bag-handle-outline"></ion-icon>
+                            <span class="count">2</span>
+                        </button>
+                    
+                        <div class="cart-dropdown">
+                            <div class="cart-item">
+                                <img src="/assets/images/products/Bedak padat skintific.png" alt="product image" class="cart-item-img">
+                                <div class="cart-item-info">
+                                    <p class="cart-item-name">Beauty of Joseon Sunscreen</p>
+                                    <p class="cart-item-price">Rp187.500</p>
+                                </div>
+                                <button class="delete-btn">
+                                    <ion-icon name="trash-outline"></ion-icon>
+                                </button>
+                            </div>
+                    
+                            <div class="cart-item">
+                                <img src="/assets/images/products/blush on maybelline fit me.png" alt="product image" class="cart-item-img">
+                                <div class="cart-item-info">
+                                    <p class="cart-item-name">Glow Serum</p>
+                                    <p class="cart-item-price">Rp180.000</p>
+                                </div>
+                                <button class="delete-btn">
+                                    <ion-icon name="trash-outline"></ion-icon>
+                                </button>
+                            </div>
+                    
+                            <div class="cart-total">
+                                <p>Total</p>
+                                <p class="total-price">Rp367.500</p>
+                            </div>
+                            <a href="/checkout.html" class="checkout-btn">Checkout</a>
+                        </div>
+                    </div>                    
+                </div>                                                   
+            </div>
+        </div>
+
+        <nav class="desktop-navigation-menu">
+
+            <div class="container">
+
+                <ul class="desktop-menu-category-list">
+
+                    <li class="menu-category">
+                        <a href="/Home.html" class="menu-title">Home</a>
+                    </li>
+
+                    <li class="menu-category">
+                        <a href="/BestSeller.html" class="menu-title">Best Sellers</a>
+                    </li>
+
+                    <li class="menu-category">
+                        <a href="/Products.html" class="menu-title">Products</a>
+                    </li>
+
+                    <li class="menu-category has-submenu">
+                        <a class="menu-title">Categories</a>
+                        <ul class="submenu">
+                          <li><a href="#">Makeup</a></li>
+                          <li><a href="#">Hair Care</a></li>
+                          <li><a href="#">Body Care</a></li>
+                        </ul>   
+                    </li>
+
+                    <li class="menu-category">
+                        <a href="/About.html" class="menu-title">About</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <div class="banner">
+
+            <div class="container">
+
+                <div class="slider-container has-scrollbar">
+
+                    <div class="slider-item">
+
+                        <img src="./assets/images/b1.jpg" alt="" class="banner-img">
+
+                    </div>
+
+                    
+                    <div class="slider-item">
+
+                        <img src="./assets/images/b2.png" alt="" class="banner-img">
+
+                    </div>
+
+                    <div class="slider-item">
+
+                        <img src="./assets/images/b3.jpg" alt="" class="banner-img">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div>
+            <h2 class="title">Best Deal</h2>
+
+            <iframe src="BestDeal.html" width="100%" height="600px" style="border:none;"></iframe>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-nav">
+
+            <div class="container">
+
+                <ul class="footer-nav-list">
+
+                    <li class="footer-nav-item">
+                        <h2 class="nav-title">Contact</h2>
+                    </li>
+
+                    <li class="footer-nav-item flex">
+                        <div class="icon-box">
+                            <ion-icon name="location-outline"></ion-icon>
+                        </div>
+
+                        <address class="content">
+                           Jl. Surya Sumantri No.65, Sukawarna, Kec. Sukajadi,<br>
+                           Kota Bandung
+                        </address>
+                    </li>
+
+                    <li class="footer-nav-item flex">
+                        <div class="icon-box">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </div>
+
+                        <a href="tel:+62812-3456-7899" class="footer-nav-link">+62812-3456-7899</a>
+                    </li>
+
+                    <li class="footer-nav-item flex">
+                        <div class="icon-box">
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </div>
+
+                        <a href="mailto:glowery@gmail.com" class="footer-nav-link">glowery@gmail.com</a>
+
+                    </li>
+
+                </ul>
+
+                <ul class="footer-nav-list">
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="./assets/js/script.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
