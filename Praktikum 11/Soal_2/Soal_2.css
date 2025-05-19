@@ -1,0 +1,24 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  border: 1px solid black;
+  padding: 2px;
+  width: 600px;
+}
+
+.box {
+  border: 1px inset gray;
+  padding: 8px;
+  margin-bottom: 2px;
+  background-color: #f9f9f9;
+}
+
+button {
+  padding: 5px 10px;
+  margin-top: 10px;
+}

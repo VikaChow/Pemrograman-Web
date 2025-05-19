@@ -1,0 +1,29 @@
+{
+  "title": "Portal S1-Sistem Informasi",
+  "link": "http://si.itmaranatha.org",
+  "generator": "S1-SI FIT UKM",
+  "items": [
+    {
+      "title": "BIE02 - Pemrograman Web",
+      "link": "https://morning.maranatha.edu/course/view.php?id=4245",
+      "universitas": {
+        "m": "http://www.itmaranatha.org/"
+      },
+      "description": "Matakuliah ini akan mengenalkan dan mengajarkan mahasiswa tentang dasar-dasar dalam pemrograman web. Di sini mahasiswa akan mempelajari penulisan tag-tag HTML sebagai pembentuk dasar dari suatu halaman web, mahasiswa juga akan mempelajari CSS sebagai pelengkap fungsionalitas dari HTML. Selain itu mahasiswa juga akan mempelajari pemrograman web di sisi klien (client side scripting) dengan menggunakan JavaScript. Dan sebagai pengenalan teknologi baru, mahasiswa juga akan mempelajari sekilas mengenai teknologi JQuery dan teknologi JSON.",
+      "published": "01-January-2023",
+      "author": "Dosen S1-SI",
+      "tags": "S1-Sistem Informasi, Pemrograman Web"
+    },
+    {
+      "title": "IS407 - Basis Data 2",
+      "link": "http://si.itmaranatha.org/index.php/is407-basis-data-2",
+      "universitas": {
+        "m": "http://www.itmaranatha.org/"
+      },
+      "description": "Mata kuliah ini mengajarkan kepada mahasiswa bahasa pemrograman SQL yang meliputi: perintah SQL untuk mengambil data dari tabel dan mengurutkan data, fungsi-fungsi Oracle seperti fungsi tanggal, join table, operasi DDL, DML, constraint, subquery, view, index, dan PL/SQL.",
+      "published": "01-January-2023",
+      "author": "Dosen S1-SI",
+      "tags": "S1-Sistem Informasi, Basis Data 2"
+    }
+  ]
+}
