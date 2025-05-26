@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detail Produk - Growely</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="top-icons">
+      <button id="wishlist-btn" aria-label="Wishlist">❤️ <span id="wishlist-count">0</span></button>
+      <button id="cart-btn" aria-label="Keranjang Belanja">🛒 <span id="cart-count">0</span></button>
+      <button id="profile-btn" aria-label="Profil Pengguna">👤</button>
+    </div>
+  </div>
+  
+  <header class="main-navbar">
+    <div class="logo"><a href="/Home.html"><img src="/assets/images/logo/Logo.png" alt="Growely Logo" /></a></div>
+    <nav class="nav-links">
+      <a href="/Home.html">NEW</a>
+      <a href="/produk-face.html">FACE</a>
+      <a href="/produk-eyes.html">EYES</a>
+      <a href="/produk-lips.html">LIPS</a>
+      <a href="/produk-skin.html">SKIN</a>
+    </nav>
+  </header>
+
+  <main id="product-detail-container">
+    <!-- Detail produk akan dimuat dari JS -->
+  </main>
+
+  <div id="wishlist-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="wishlist-title">
+    <div class="modal-content">
+      <button class="close" id="wishlist-close" aria-label="Tutup Wishlist">&times;</button>
+      <h2 id="wishlist-title">Wishlist</h2>
+      <ul id="wishlist-items">
+        <li>Wishlist kosong</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="cart-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+    <div class="modal-content">
+      <button class="close" id="cart-close" aria-label="Tutup Keranjang">&times;</button>
+      <h2 id="cart-title">Keranjang Belanja</h2>
+      <ul id="cart-items">
+        <li>Keranjang kosong</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="profile-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="profile-title">
+    <div class="modal-content">
+      <button class="close" id="profile-close" aria-label="Tutup Profil">&times;</button>
+      <h2 id="profile-title">Profil Pengguna</h2>
+      <p><strong>Nama:</strong> <span id="user-name">-</span></p>
+      <p><strong>Email:</strong> <span id="user-email">-</span></p>
+      <button id="logout-btn">Logout</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Growely. Dibuat dengan cinta untuk kecantikan Indonesia.</p>
+  </footer>
+
+  <script src="/assets/js/product-detail.js"></script>
+</body>
+</html>

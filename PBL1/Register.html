@@ -1,44 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glowely</title>
-    <link rel="stylesheet" href="/assets/css/Login_Register.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daftar Akun - Growely</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
-    <div class="wrapper">
-        <form action="/Home.html" method="get">
-            <h1>Register</h1>
-        
-            <div class="input-box">
-                <i class='bx bx-user-circle'></i> 
-                <input type="text" id="username" placeholder="Username" required>
-            </div>
+  <main class="login-section">
+    <h2>Buat Akun Baru</h2>
+    <form class="login-form" id="register-form">
+      <label for="name">Nama Lengkap</label>
+      <input type="text" name="name" placeholder="Nama Lengkap" required />
 
-            <div class="input-box">
-                <i class='bx bx-envelope'></i>
-                <input type="email" id="email" placeholder="Email" required>
-            </div>
-        
-            <div class="input-box">
-                <i class='bx bx-lock-alt'></i> 
-                <input type="password" id="password" placeholder="Password" required>
-            </div>
+      <label for="email">Email</label>
+      <input type="email" name="email" placeholder="Email" required />
 
-            <div class="input-box">
-                <i class='bx bx-lock-alt'></i> 
-                <input type="password" id="confirm-password" placeholder="Confirm Password" required>
-            </div>
-        
-            <button type="submit" class="button">Register</button>
-        
-            <div class="register-link">
-                <p>Already have an account? <a href="/Login.html">Login</a></p>
-            </div>
-        </form>
-    </div>
+      <label for="password">Kata Sandi</label>
+      <input type="password" name="password" placeholder="Password" required />
+
+      <label for="confirm-password">Konfirmasi Kata Sandi</label>
+      <input type="password" name="confirm-password" placeholder="Ulangi kata sandi" required />
+
+      <button type="submit">Daftar</button>
+      <p class="register-link">Sudah punya akun? <a href="/login.html">Login di sini</a></p>
+    </form>
+  </main>
+  <script src="/assets/js/Register.js"></script>
 </body>
 </html>
