@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin CRUD - Master Produk</title>
+  <link rel="stylesheet" href="assets/css/home-admin.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Master Data Produk</h1>
+
+    <form id="productForm" enctype="multipart/form-data">
+      <input type="hidden" id="productId" name="productId" />
+      
+      <input type="text" id="name" name="name" placeholder="Nama Produk" required />
+      
+      <input type="number" id="price" name="price" placeholder="Harga" required />
+
+      <input type="number" id="stock" name="stock" placeholder="Stok Produk" required />
+
+      <select id="category" name="category" required>
+        <option value="">-- Pilih Kategori --</option>
+        <option value="face">Face</option>
+        <option value="eyes">Eyes</option>
+        <option value="lips">Lips</option>
+        <option value="skin">Skin</option>
+      </select>
+
+      <select id="subcategory" name="subcategory" required style="display: none;">
+        <option value="">-- Pilih Subkategori --</option>
+      </select>
+
+      <input type="date" id="expire_at" name="expire_at" required />
+
+      <textarea id="description" name="description" placeholder="Deskripsi" required></textarea>
+      
+      <input type="file" id="image" name="image" accept="image/*" />
+      
+      <button type="submit">Simpan</button>
+    </form>
+
+    <h2>Daftar Produk</h2>
+    <table border="1" id="productTable">
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Harga</th>
+          <th>Stok</th>
+          <th>Kategori</th>
+          <th>Subkategori</th>
+          <th>Expire</th>
+          <th>Deskripsi</th>
+          <th>Image</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    
+  </script>
+
+  <script src="assets/js/home-admin.js"></script>
+</body>
+</html>

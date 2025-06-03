@@ -1,0 +1,350 @@
+:root {
+  --dark: #1c1c1c;
+  --light: #f9f9f9;
+  --accent: #e91e63;
+  --accent-hover: #c2185b;
+  --gray: #888;
+  --black: #000000;
+  --radius: 12px;
+  --link-color: #0066ff;
+  --link-hover-bg: rgba(13, 71, 161, 0.1);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body, h1, h2, h3, p, a, button {
+  font-family: 'Montserrat', sans-serif;
+}
+body {
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: var(--black);
+  border-bottom: 1px solid var(--black);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.logo {
+  flex: 0 0 auto;
+}
+.logo img {
+  height: 70px;
+}
+.nav-links {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.nav-item, .dropbtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--light);
+  padding: 5px 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.nav-item:hover, .dropbtn:hover {
+  color: var(--accent-hover);
+}
+
+.dropdown-content {
+  display: none;
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 100vw;
+  background: var(--dark);
+  border-top: 1px solid var(--dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  padding: 30px 50px;
+  min-height: 250px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: flex;
+}
+.dropdown-content a {
+  max-width: 100%;
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: var(--light);
+  flex: 0 0 calc(33.333% - 10px);
+  transition: background 0.3s ease;
+}
+.dropdown-content a:hover {
+  background: var(--accent-hover);
+  display: flex;
+  align-items: center;
+}
+
+.top-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.icon-btn {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--light);
+  font-size: 25px;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+.icon-btn:hover {
+  color: var(--accent-hover);
+}
+.icon-btn .badge {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: red;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+}
+
+.product-card {
+  position: relative;
+  background: var(--light);
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+  height: 200px;
+  margin-top: 25px;
+  transition: transform 0.3s ease;
+}
+
+.product-card h3 {
+  margin: 1rem 0 0.5rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.product-card p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
+
+.product-card .badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--black);
+  color: var(--light);
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  z-index: 10;
+  user-select: none;
+}
+
+.product-card .action-buttons {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.product-card .action-buttons button {
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: var(--accent);
+  transition: color 0.3s ease;
+  padding: 4px;
+  line-height: 1;
+  user-select: none;
+}
+.product-card .action-buttons button:hover {
+  color: var(--accent-hover);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.modal-content {
+  background: var(--dark);
+  margin: 5% auto;
+  padding: 20px 30px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 8px;
+  position: relative;
+  color: var(--light);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  font-size: 16px;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--light);
+  transition: color 0.3s ease;
+}
+.close:hover {
+  color: var(--accent-hover);
+}
+
+.modal-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 10px;
+}
+.modal-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.modal-item span {
+  flex: 1;
+  color: var(--light);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.modal-content form input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid var(--light);
+  border-radius: 4px;
+  background: var(--dark);
+  color: var(--light);
+}
+.modal-content button[type="submit"],
+.modal-content button#logout-btn {
+  margin-top: 10px;
+  background: var(--accent);
+  color: var(--light);
+  padding: 10px;
+  border: none;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+.modal-content button[type="submit"]:hover,
+.modal-content button#logout-btn:hover {
+  background: var(--accent-hover);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--black);
+  color: var(--light);
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 14px;
+  }
+  .dropdown-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+  }
+  .products {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 0 10px 40px;
+  }
+  .product-card img {
+    height: 180px;
+    margin-bottom: 15px;
+  }
+  .product-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .product-card p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  .product-card .action-buttons button {
+    font-size: 24px;
+  }
+  .modal-content {
+    width: 95%;
+    padding: 15px 20px;
+  }
+}
