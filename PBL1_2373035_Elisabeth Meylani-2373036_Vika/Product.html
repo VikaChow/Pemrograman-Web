@@ -19,46 +19,50 @@
     <nav class="nav-links" role="navigation" aria-label="Main menu">
       <a href="Home.html" class="nav-item">NEW</a>
 
-      <div class="dropdown" tabindex="0" aria-haspopup="true" aria-expanded="false">
+      <!-- Dropdown FACE -->
+      <div class="dropdown" tabindex="0" aria-haspopup="true">
         <button class="dropbtn" aria-controls="dropdown-face" aria-expanded="false">FACE</button>
         <div class="dropdown-content" id="dropdown-face" role="menu" aria-label="FACE submenu">
-          <a href="" role="menuitem">Blush On</a>
-          <a href="" role="menuitem">Concealer</a>
-          <a href="" role="menuitem">Contour</a>
-          <a href="" role="menuitem">Foundation</a>
-          <a href="" role="menuitem">Highlighter</a>
-          <a href="" role="menuitem">Powder</a>
+          <a href="Product.html?category=face&subcategory=blush_on" role="menuitem">Blush On</a>
+          <a href="Product.html?category=face&subcategory=concealer" role="menuitem">Concealer</a>
+          <a href="Product.html?category=face&subcategory=contour" role="menuitem">Contour</a>
+          <a href="Product.html?category=face&subcategory=foundation" role="menuitem">Foundation</a>
+          <a href="Product.html?category=face&subcategory=highlighter" role="menuitem">Highlighter</a>
+          <a href="Product.html?category=face&subcategory=powder" role="menuitem">Powder</a>
         </div>
       </div>
 
-      <div class="dropdown" tabindex="0" aria-haspopup="true" aria-expanded="false">
+      <!-- Dropdown EYES -->
+      <div class="dropdown" tabindex="0" aria-haspopup="true">
         <button class="dropbtn" aria-controls="dropdown-eyes" aria-expanded="false">EYES</button>
         <div class="dropdown-content" id="dropdown-eyes" role="menu" aria-label="EYES submenu">
-          <a href="" role="menuitem">Eyebrow</a>
-          <a href="" role="menuitem">Eyeliner</a>
-          <a href="" role="menuitem">Eye pallate</a>
-          <a href="" role="menuitem">Eyeshadow</a>
-          <a href="" role="menuitem">Mascara</a>
+          <a href="Product.html?category=eyes&subcategory=eyebrow" role="menuitem">Eyebrow</a>
+          <a href="Product.html?category=eyes&subcategory=eyeliner" role="menuitem">Eyeliner</a>
+          <a href="Product.html?category=eyes&subcategory=eye_pallete" role="menuitem">Eye Pallete</a>
+          <a href="Product.html?category=eyes&subcategory=eyeshadow" role="menuitem">Eyeshadow</a>
+          <a href="Product.html?category=eyes&subcategory=mascara" role="menuitem">Mascara</a>
         </div>
       </div>
 
-      <div class="dropdown" tabindex="0" aria-haspopup="true" aria-expanded="false">
+      <!-- Dropdown LIPS -->
+      <div class="dropdown" tabindex="0" aria-haspopup="true">
         <button class="dropbtn" aria-controls="dropdown-lips" aria-expanded="false">LIPS</button>
         <div class="dropdown-content" id="dropdown-lips" role="menu" aria-label="LIPS submenu">
-          <a href="" role="menuitem">Lib Balm</a>
-          <a href="" role="menuitem">Lip Gloss</a>
-          <a href="" role="menuitem">Lip Liquid</a>
-          <a href="" role="menuitem">Lip Pallate</a>
-          <a href="" role="menuitem">Lip Pencil</a>
-          <a href="" role="menuitem">Lipstik</a>
+          <a href="Product.html?category=lips&subcategory=lip_balm" role="menuitem">Lip Balm</a>
+          <a href="Product.html?category=lips&subcategory=lip_gloss" role="menuitem">Lip Gloss</a>
+          <a href="Product.html?category=lips&subcategory=lip_liquid" role="menuitem">Lip Liquid</a>
+          <a href="Product.html?category=lips&subcategory=lip_pallete" role="menuitem">Lip Pallete</a>
+          <a href="Product.html?category=lips&subcategory=lip_pencil" role="menuitem">Lip Pencil</a>
+          <a href="Product.html?category=lips&subcategory=lipstik" role="menuitem">Lipstik</a>
         </div>
       </div>
 
-      <div class="dropdown" tabindex="0" aria-haspopup="true" aria-expanded="false">
+      <!-- Dropdown SKIN -->
+      <div class="dropdown" tabindex="0" aria-haspopup="true">
         <button class="dropbtn" aria-controls="dropdown-skin" aria-expanded="false">SKIN</button>
         <div class="dropdown-content" id="dropdown-skin" role="menu" aria-label="SKIN submenu">
-          <a href="" role="menuitem">Cleanser</a>
-          <a href="" role="menuitem">Setting Spray</a>
+          <a href="Product.html?category=skin&subcategory=cleanser" role="menuitem">Cleanser</a>
+          <a href="Product.html?category=skin&subcategory=setting_spray" role="menuitem">Setting Spray</a>
         </div>
       </div>
     </nav>
@@ -89,6 +93,10 @@
       <span id="cart-close" class="close">&times;</span>
       <h2>Keranjang</h2>
       <div id="cart-items"></div>
+      
+      <div class="cart-actions">
+        <button id="checkout-btn">Checkout</button>
+      </div>
     </div>
   </div>
 
@@ -112,6 +120,12 @@
 
         <button type="submit">Ganti Password</button>
       </form>
+      <button id="my-orders-btn">Pesanan Saya</button>
+
+      <div id="user-orders-modal" class="hidden">
+        <button id="user-orders-close">Tutup</button>
+        <div id="user-orders-container"></div>
+      </div>
 
       <button id="logout-btn">Logout</button>
     </div>

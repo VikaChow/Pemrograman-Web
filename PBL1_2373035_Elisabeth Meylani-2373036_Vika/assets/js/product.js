@@ -14,6 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const cartClose = document.getElementById('cart-close');
   const profileClose = document.getElementById('profile-close');
 
+  const params = new URLSearchParams(window.location.search);
+  const category = params.get("category");
+  const subcategory = params.get("subcategory");
+
+  const checkoutBtn = document.getElementById("checkout-btn");
+
   function updateWishlistCount() {
     fetch('assets/php/count-wishlist.php')
       .then(res => res.json())
@@ -78,21 +84,20 @@ document.addEventListener("DOMContentLoaded", function () {
         const container = document.getElementById('cart-items');
         container.innerHTML = '';
 
-        if (!Array.isArray(data) || data.length === 0) {
+        if (!Array.isArray(data.data) || data.data.length === 0) {
           container.innerHTML = '<p>Keranjang kosong.</p>';
-          openModal(cartModal);
-          return;
+        } else {
+          data.data.forEach(item => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+              <div class="modal-item">
+                <img src="assets/images/products/${item.image}" alt="${item.name}" width="50">
+                <span>${item.quantity} x ${item.name}</span>
+                <p>Rp${(item.price * item.quantity).toLocaleString("id-ID")}</p>
+              </div>`;
+            container.appendChild(div);
+          });
         }
-
-        data.forEach(item => {
-          const div = document.createElement('div');
-          div.innerHTML = `
-            <div class="modal-item">
-              <img src="assets/images/products/${item.image}" alt="${item.name}" width="50">
-              <span>${item.name} x ${item.quantity}</span>
-            </div>`;
-          container.appendChild(div);
-        });
 
         openModal(cartModal);
       })
@@ -122,10 +127,13 @@ document.addEventListener("DOMContentLoaded", function () {
   cartClose?.addEventListener('click', () => closeModal(cartModal));
   profileClose?.addEventListener('click', () => closeModal(profileModal));
 
-  window.addEventListener('click', (event) => {
-    if (event.target === wishlistModal) closeModal(wishlistModal);
-    if (event.target === cartModal) closeModal(cartModal);
-    if (event.target === profileModal) closeModal(profileModal);
+  window.addEventListener('click', (e) => {
+    if (e.target === wishlistModal) closeModal(wishlistModal);
+    if (e.target === cartModal) closeModal(cartModal);
+    if (e.target === profileModal) closeModal(profileModal);
+    if (e.target === document.getElementById("user-orders-modal")) {
+      document.getElementById("user-orders-modal").classList.add("hidden");
+    }
   });
 
   const logoutBtn = document.getElementById('logout-btn');
@@ -176,52 +184,120 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateWishlistCount();
   updateCartCount();
-});
 
-const params = new URLSearchParams(window.location.search);
-const category = params.get("category");
-const subcategory = params.get("subcategory");
+  document.getElementById("product-title").textContent = `Produk ${subcategory || ""}`;
+  function loadProducts(category, subcategory) {
+    const productList = document.getElementById("product-list");
+    productList.innerHTML = "<p>Memuat produk...</p>";
 
-document.getElementById("product-title").textContent = `Produk ${subcategory || ""}`;
+    fetch(`assets/php/get-products.php?category=${category}&subcategory=${subcategory}`)
+      .then(response => response.json())
+      .then(products => {
+        productList.innerHTML = "";
 
-function loadProducts(category, subcategory) {
-  const productList = document.getElementById("product-list");
-  productList.innerHTML = "<p>Memuat produk...</p>";
+        if (!products || products.length === 0) {
+          productList.innerHTML = "<p>Tidak ada produk ditemukan.</p>";
+          return;
+        }
 
-  fetch(`assets/php/get-products.php?category=${category}&subcategory=${subcategory}`)
-    .then(res => res.json())
-    .then(data => {
-      productList.innerHTML = "";
+        products.forEach(product => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
 
-      if (!Array.isArray(data) || data.length === 0) {
-        productList.innerHTML = "<p>Tidak ada produk ditemukan.</p>";
-        return;
-      }
+          const imageSrc = product.image
+            ? `assets/images/products/${product.image}`
+            : 'assets/images/default-product.jpg';
 
-      data.forEach(product => {
-        const item = document.createElement("div");
-        item.className = "product-item";
+          let formattedPrice = "Rp0";
+          if (product.price && !isNaN(product.price)) {
+            const price = parseFloat(product.price);
+            formattedPrice = `Rp${price.toLocaleString('id-ID')}`;
+          }
 
-        const imageSrc = `assets/images/products/${product.image}`;
-        const priceNumber = Number(product.price);
-        const formattedPrice = isNaN(priceNumber) ? "Rp0" : `Rp${priceNumber.toLocaleString('id-ID')}`;
+          card.innerHTML = `
+            <span class="badge">NEW</span>
+            <div class="action-buttons">
+              <button class="wishlist-btn" data-id="${product.id}" aria-label="Tambah ke Wishlist">♡</button>
+              <button class="cart-btn" data-id="${product.id}" aria-label="Tambah ke Keranjang">+</button>
+            </div>
+            <img src="${imageSrc}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p class="price">${formattedPrice}</p>
+          `;
 
-        item.innerHTML = `
-          <span class="badge">NEW</span>
-          <div class="action-buttons">
-            <button class="wishlist-btn" data-id="${product.id}" aria-label="Tambah ke Wishlist">♡</button>
-            <button class="cart-btn" data-id="${product.id}" aria-label="Tambah ke Keranjang">+</button>
-          </div>
-          <img src="${imageSrc}" alt="${product.name}">
-          <h3>${product.name}</h3>
-          <p class="price">${formattedPrice}</p>
-        `;
-        productList.appendChild(item);
+          productList.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error("Gagal memuat produk:", error);
+        productList.innerHTML = "<p>Gagal memuat produk.</p>";
       });
-    })
-    .catch(() => {
-      productList.innerHTML = "<p>Gagal memuat produk.</p>";
-    });
-}
+  }
+  loadProducts(category, subcategory);
 
-loadProducts(category, subcategory);
+  checkoutBtn?.addEventListener("click", () => {
+    fetch('assets/php/get-cart.php')
+      .then(res => res.json())
+      .then(data => {
+        const items = data.data;
+
+        if (!items || items.length === 0) {
+          Swal.fire({
+            icon: 'info',
+            title: 'Keranjang Kosong',
+            text: 'Silakan tambahkan produk ke keranjang sebelum checkout.',
+            confirmButtonColor: '#3085d6'
+          });
+        } else {
+          window.location.href = "checkout.html";
+        }
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Gagal Mengecek Keranjang',
+          text: 'Terjadi kesalahan. Coba lagi nanti.',
+          confirmButtonColor: '#d33'
+        });
+      });
+  });
+
+  document.getElementById('my-orders-btn').addEventListener('click', () => {
+    fetch('assets/php/get-user-orders.php')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && Array.isArray(data.orders)) {
+          const container = document.getElementById('user-orders-container');
+          container.innerHTML = '';
+          if (data.orders.length === 0) {
+            container.innerHTML = '<p>Kamu belum memiliki pesanan.</p>';
+          } else {
+            data.orders.forEach(order => {
+              const div = document.createElement('div');
+              div.classList.add('order-card');
+              div.innerHTML = `
+                <h3>#ORD${order.order_id}</h3>
+                <p><strong>Tanggal:</strong> ${order.created_at}</p>
+                <p><strong>Status:</strong> ${order.status}</p>
+                <p><strong>Total:</strong> Rp${order.total_price}</p>
+                <p><strong>Produk:</strong> ${Array.isArray(order.products) ? order.products.join(', ') : order.products}</p>
+                <hr/>
+              `;
+              container.appendChild(div);
+            });
+          }
+          document.getElementById('user-orders-modal').classList.remove('hidden');
+        } else {
+          Swal.fire("Oops", "Gagal mengambil data pesanan.", "error");
+        }
+      })
+      .catch(err => {
+        console.error('Fetch error:', err);
+        Swal.fire("Error", "Terjadi kesalahan saat mengambil data.", "error");
+      });
+  });
+
+  document.getElementById('user-orders-close').addEventListener('click', () => {
+    document.getElementById('user-orders-modal').classList.add('hidden');
+  });
+});

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin CRUD - Master Produk</title>
+  <link rel="stylesheet" href="assets/css/pesanan.css" />
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Growely</h2>
+    <a href="Home-Admin.html">Dashboard</a>
+    <a href="Master-Produk.html">Daftar Produk</a>
+    <a href="Banner.html">Banner</a>
+    <a href="Pesanan.html">Pesanan</a>
+    <a id="logout-btn">Logout</a>
+  </div>
+
+  <div class="container">
+    <h2>Daftar Produk</h2>
+    <table border="1" id="productTable">
+      <thead>
+        <tr>
+          <th>Order Id</th>
+          <th>Name Pelanggan</th>
+          <th>Produk</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Modal -->
+  <div id="detailModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3>Detail Pesanan</h3>
+      <p><strong>ID Pesanan:</strong> <span id="modal-order-id"></span></p>
+      <p><strong>Nama Penerima:</strong> <span id="modal-name"></span></p>
+      <p><strong>Alamat:</strong> <span id="modal-address"></span></p>
+      <p><strong>Total:</strong> <span id="modal-total"></span></p>
+      <p><strong>Status:</strong> <span id="modal-status"></span></p>
+      <p><strong>Tanggal:</strong> <span id="modal-date"></span></p>
+      <p><strong>Produk:</strong></p>
+      <ul id="modal-products"></ul>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="assets/js/pesanan.js"></script>
+</body>
+</html>
