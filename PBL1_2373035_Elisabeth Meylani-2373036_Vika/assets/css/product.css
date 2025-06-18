@@ -29,21 +29,31 @@ body {
 
 .navbar {
   display: flex;
+  height: 100px;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 0 20px;
   background: var(--black);
   border-bottom: 1px solid var(--black);
   position: sticky;
   top: 0;
   z-index: 999;
 }
+
 .logo {
   flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  position: absolute;
 }
+
 .logo img {
-  height: 70px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
 }
+
 .nav-links {
   flex: 1;
   text-align: center;
@@ -69,38 +79,34 @@ body {
 
 .dropdown-content {
   display: none;
-  position: fixed;
-  top: 65px;
-  left: 0;
-  width: 100vw;
+  position: absolute;
+  top: 65%;
+  width: max-content;
   background: var(--dark);
-  border-top: 1px solid var(--dark);
+  border: 1px solid var(--dark);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 1000;
-  padding: 30px 50px;
-  min-height: 250px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 40px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: left;
+
 }
+
 .dropdown:hover .dropdown-content,
 .dropdown:focus-within .dropdown-content {
   display: flex;
 }
+
 .dropdown-content a {
-  max-width: 100%;
   display: block;
   padding: 10px 15px;
   text-decoration: none;
   color: var(--light);
-  flex: 0 0 calc(33.333% - 10px);
   transition: background 0.3s ease;
+  white-space: nowrap;
 }
+
 .dropdown-content a:hover {
   background: var(--accent-hover);
-  display: flex;
-  align-items: center;
 }
 
 .top-icons {
@@ -241,20 +247,6 @@ body {
   color: var(--light);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
   font-size: 16px;
-}
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 28px;
-  cursor: pointer;
-  border: none;
-  background: none;
-  color: var(--light);
-  transition: color 0.3s ease;
-}
-.close:hover {
-  color: var(--accent-hover);
 }
 
 .modal-item {
@@ -397,4 +389,14 @@ footer {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.modal-item button.remove-wishlist,
+.modal-item button.remove-cart {
+  background: none;
+  border: none;
+  color: #d33;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
 }

@@ -11,7 +11,7 @@ require 'db.php';
 $userId = $_SESSION['user_id'];
 
 $query = $conn->prepare("
-  SELECT w.id, p.name, p.image 
+  SELECT w.product_id, p.name, p.image 
   FROM wishlist w 
   JOIN products p ON w.product_id = p.id 
   WHERE w.user_id = ?

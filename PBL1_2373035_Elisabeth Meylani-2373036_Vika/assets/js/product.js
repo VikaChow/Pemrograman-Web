@@ -55,23 +55,20 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(data => {
         const container = document.getElementById('wishlist-items');
         container.innerHTML = '';
-
         if (!Array.isArray(data) || data.length === 0) {
           container.innerHTML = '<p>Wishlist kosong.</p>';
-          openModal(wishlistModal);
-          return;
+        } else {
+          data.forEach(item => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+              <div class="modal-item">
+                <img src="assets/images/products/${item.image}" alt="${item.name}" width="50">
+                <span>${item.name}</span>
+                <button class="remove-wishlist" data-id="${item.product_id}" aria-label="Hapus dari wishlist">❌</button>
+              </div>`;
+            container.appendChild(div);
+          });
         }
-
-        data.forEach(item => {
-          const div = document.createElement('div');
-          div.innerHTML = `
-            <div class="modal-item">
-              <img src="assets/images/products/${item.image}" alt="${item.name}" width="50">
-              <span>${item.name}</span>
-            </div>`;
-          container.appendChild(div);
-        });
-
         openModal(wishlistModal);
       })
       .catch(() => alert('Gagal memuat wishlist.'));
@@ -83,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(data => {
         const container = document.getElementById('cart-items');
         container.innerHTML = '';
-
         if (!Array.isArray(data.data) || data.data.length === 0) {
           container.innerHTML = '<p>Keranjang kosong.</p>';
         } else {
@@ -94,11 +90,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 <img src="assets/images/products/${item.image}" alt="${item.name}" width="50">
                 <span>${item.quantity} x ${item.name}</span>
                 <p>Rp${(item.price * item.quantity).toLocaleString("id-ID")}</p>
+                <button class="remove-cart" data-id="${item.product_id}" aria-label="Hapus dari keranjang">❌</button>
               </div>`;
             container.appendChild(div);
           });
         }
-
         openModal(cartModal);
       })
       .catch(() => alert('Gagal memuat keranjang.'));
@@ -179,7 +175,53 @@ document.addEventListener("DOMContentLoaded", function () {
             updateCartCount();
           })
           .catch(() => alert('Gagal menambahkan ke keranjang.'));
-        }
+      }
+
+      if (e.target.classList.contains('remove-wishlist')) {
+        const productId = parseInt(e.target.getAttribute('data-id'));
+        fetch('assets/php/remove-from-wishlist.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ product_id: productId })
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              e.target.closest('.modal-item').remove();
+              updateWishlistCount();
+              const container = document.getElementById('wishlist-items');
+              if (container.children.length === 0) {
+                container.innerHTML = '<p>Wishlist kosong.</p>';
+              }
+            } else {
+              alert(data.message || 'Gagal menghapus dari wishlist.');
+            }
+          })
+          .catch(() => alert('Terjadi kesalahan saat menghapus dari wishlist.'));
+      }
+
+      if (e.target.classList.contains('remove-cart')) {
+        const productId = parseInt(e.target.getAttribute('data-id'));
+        fetch('assets/php/remove-from-cart.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ product_id: productId })
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              e.target.closest('.modal-item').remove();
+              updateCartCount();
+              const container = document.getElementById('cart-items');
+              if (container.children.length === 0) {
+                container.innerHTML = '<p>Keranjang kosong.</p>';
+              }
+            } else {
+              alert(data.message || 'Gagal menghapus dari keranjang.');
+            }
+          })
+          .catch(() => alert('Terjadi kesalahan saat menghapus dari keranjang.'));
+      }
     });
 
   updateWishlistCount();

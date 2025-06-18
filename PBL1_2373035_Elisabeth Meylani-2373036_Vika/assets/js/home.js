@@ -14,8 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const profileClose = document.getElementById('profile-close');
   const logoutBtn = document.getElementById('logout-btn');
   const checkoutBtn = document.getElementById("checkout-btn");
+  const userOrdersModal = document.getElementById("user-orders-modal");
+  const userOrdersClose = document.getElementById("user-orders-close");
 
-  // === Update Wishlist & Cart Count ===
+  // === Count Update Functions ===
   function updateCount(url, el) {
     fetch(url)
       .then(res => res.json())
@@ -44,9 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         products.forEach(product => {
           const card = document.createElement('div');
           card.className = 'product-card';
-          const imageSrc = product.image
-            ? `assets/images/products/${product.image}`
-            : 'assets/images/default-product.jpg';
+          const imageSrc = product.image ? `assets/images/products/${product.image}` : 'assets/images/default-product.jpg';
           card.innerHTML = `
             <span class="badge">NEW</span>
             <div class="action-buttons">
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // === Modal Open/Close ===
+  // === Modal Handlers ===
   function openModal(modal) {
     modal.style.display = 'block';
   }
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="modal-item">
                 <img src="assets/images/products/${item.image}" alt="${item.name}" width="50">
                 <span>${item.name}</span>
-                <button class="remove-wishlist" data-id="${item.id}" aria-label="Hapus dari wishlist">❌</button>
+                <button class="remove-wishlist" data-id="${item.product_id}" aria-label="Hapus dari wishlist">❌</button>
               </div>`;
             container.appendChild(div);
           });
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <img src="assets/images/products/${item.image}" alt="${item.name}" width="50">
                 <span>${item.quantity} x ${item.name}</span>
                 <p>Rp${(item.price * item.quantity).toLocaleString("id-ID")}</p>
-                <button class="remove-cart" data-id="${item.id}" aria-label="Hapus dari keranjang">❌</button>
+                <button class="remove-cart" data-id="${item.product_id}" aria-label="Hapus dari keranjang">❌</button>
               </div>`;
             container.appendChild(div);
           });
@@ -144,14 +144,13 @@ document.addEventListener("DOMContentLoaded", function () {
   wishlistClose?.addEventListener('click', () => closeModal(wishlistModal));
   cartClose?.addEventListener('click', () => closeModal(cartModal));
   profileClose?.addEventListener('click', () => closeModal(profileModal));
+  userOrdersClose?.addEventListener('click', () => userOrdersModal.classList.add('hidden'));
 
   window.addEventListener('click', (e) => {
     if (e.target === wishlistModal) closeModal(wishlistModal);
     if (e.target === cartModal) closeModal(cartModal);
     if (e.target === profileModal) closeModal(profileModal);
-    if (e.target === document.getElementById("user-orders-modal")) {
-      document.getElementById("user-orders-modal").classList.add("hidden");
-    }
+    if (e.target === userOrdersModal) userOrdersModal.classList.add("hidden");
   });
 
   logoutBtn?.addEventListener('click', () => {
@@ -162,10 +161,12 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(() => alert('Gagal logout. Silakan coba lagi.'));
   });
 
-  // === Add to Wishlist / Cart ===
+  // === Wishlist & Cart Button Logic ===
   document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('wishlist-btn')) {
-      const productId = e.target.getAttribute('data-id');
+    const target = e.target;
+
+    if (target.classList.contains('wishlist-btn')) {
+      const productId = target.getAttribute('data-id');
       fetch('assets/php/add-to-wishlist.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -179,8 +180,8 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(() => alert('Gagal menambahkan ke wishlist.'));
     }
 
-    if (e.target.classList.contains('cart-btn')) {
-      const productId = e.target.getAttribute('data-id');
+    if (target.classList.contains('cart-btn')) {
+      const productId = target.getAttribute('data-id');
       fetch('assets/php/add-to-cart.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -194,8 +195,8 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(() => alert('Gagal menambahkan ke keranjang.'));
     }
 
-    if (e.target.classList.contains('remove-wishlist')) {
-      const productId = e.target.getAttribute('data-id');
+    if (target.classList.contains('remove-wishlist')) {
+      const productId = parseInt(target.getAttribute('data-id'));
       fetch('assets/php/remove-from-wishlist.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -203,15 +204,23 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then(res => res.json())
         .then(data => {
-          alert(data.message);
-          updateWishlistCount();
-          wishlistBtn.click(); // Refresh modal
+          if (data.success) {
+            target.closest('.modal-item').remove();
+            updateWishlistCount();
+            const container = document.getElementById('wishlist-items');
+            if (container.children.length === 0) {
+              container.innerHTML = '<p>Wishlist kosong.</p>';
+            }
+          } else {
+            alert(data.message || 'Gagal menghapus dari wishlist.');
+          }
         })
-        .catch(() => alert('Gagal menghapus dari wishlist.'));
+        .catch(() => alert('Terjadi kesalahan saat menghapus dari wishlist.'));
     }
 
     if (e.target.classList.contains('remove-cart')) {
-      const productId = e.target.getAttribute('data-id');
+      const productId = parseInt(e.target.getAttribute('data-id'));
+      console.log("Menghapus dari cart:", productId); // Debug
       fetch('assets/php/remove-from-cart.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -219,11 +228,18 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then(res => res.json())
         .then(data => {
-          alert(data.message);
-          updateCartCount();
-          cartBtn.click(); // Refresh modal
+          if (data.success) {
+            target.closest('.modal-item').remove();
+            updateCartCount();
+            const container = document.getElementById('cart-items');
+            if (container.children.length === 0) {
+              container.innerHTML = '<p>Keranjang kosong.</p>';
+            }
+          } else {
+            alert(data.message || 'Gagal menghapus dari keranjang.');
+          }
         })
-        .catch(() => alert('Gagal menghapus dari keranjang.'));
+        .catch(() => alert('Terjadi kesalahan saat menghapus dari keranjang.'));
     }
   });
 
@@ -295,12 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(() => console.error('Gagal memuat banner.'));
   }
 
-  // === INIT ===
-  updateWishlistCount();
-  updateCartCount();
-  loadProducts();
-  loadBanners();
-
+  // === Checkout Logic ===
   checkoutBtn?.addEventListener("click", () => {
     fetch('assets/php/get-cart.php')
       .then(res => res.json())
@@ -327,14 +338,14 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 
-  // === My Orders Modal ===
-  document.getElementById('my-orders-btn').addEventListener('click', () => {
+  // === My Orders ===
+  document.getElementById('my-orders-btn')?.addEventListener('click', () => {
     fetch('assets/php/get-user-orders.php')
       .then(res => res.json())
       .then(data => {
+        const container = document.getElementById('user-orders-container');
+        container.innerHTML = '';
         if (data.success && Array.isArray(data.orders)) {
-          const container = document.getElementById('user-orders-container');
-          container.innerHTML = '';
           if (data.orders.length === 0) {
             container.innerHTML = '<p>Kamu belum memiliki pesanan.</p>';
           } else {
@@ -352,18 +363,19 @@ document.addEventListener("DOMContentLoaded", function () {
               container.appendChild(div);
             });
           }
-          document.getElementById('user-orders-modal').classList.remove('hidden');
+          userOrdersModal?.classList.remove('hidden');
         } else {
           Swal.fire("Oops", "Gagal mengambil data pesanan.", "error");
         }
       })
-      .catch(err => {
-        console.error('Fetch error:', err);
+      .catch(() => {
         Swal.fire("Error", "Terjadi kesalahan saat mengambil data.", "error");
       });
   });
 
-  document.getElementById('user-orders-close').addEventListener('click', () => {
-    document.getElementById('user-orders-modal').classList.add('hidden');
-  });
+  // === INIT ===
+  updateWishlistCount();
+  updateCartCount();
+  loadProducts();
+  loadBanners();
 });
