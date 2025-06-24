@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glowery</title>
+    <link rel="stylesheet" href="assets/css/pesanan.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>Growely</h2>
+      <a href="Home-Admin.html">Dashboard</a>
+      <a href="Master-Produk.html">Daftar Produk</a>
+      <a href="Banner.html">Banner</a>
+      <a href="Pesanan.html" class="active">Pesanan</a>
+      <a href="#" id="logout-btn">Logout</a>
+    </div>
+
+    <div class="container">
+      <h2>Daftar Pesanan</h2>
+
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Cari pesanan..." />
+      </div>
+
+      <table border="1" id="productTable">
+        <thead>
+          <tr>
+            <th class="sortable" data-col="order_id">Order ID</th>
+            <th class="sortable" data-col="recipient_name">Nama Pelanggan</th>
+            <th>Produk</th>
+            <th class="sortable" data-col="total_price">Total</th>
+            <th class="sortable" data-col="status">Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div id="detailModal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Detail Pesanan</h3>
+        <p><strong>ID Pesanan:</strong> <span id="modal-order-id"></span></p>
+        <p><strong>Nama Penerima:</strong> <span id="modal-name"></span></p>
+        <p><strong>Alamat:</strong> <span id="modal-address"></span></p>
+        <p><strong>Total:</strong> <span id="modal-total"></span></p>
+        <p><strong>Status:</strong> <span id="modal-status"></span></p>
+        <p><strong>Tanggal:</strong> <span id="modal-date"></span></p>
+        <p><strong>Produk:</strong></p>
+        <ul id="modal-products"></ul>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/pesanan.js"></script>
+  </body>
+</html>

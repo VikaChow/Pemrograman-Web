@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Glowery</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/login.css" />
+  </head>
+  <body>
+    <main class="login-section">
+      <h2>Buat Akun Baru</h2>
+      <form
+        class="login-form"
+        id="register-form"
+        action="assets/php/register.php"
+        method="POST"
+      >
+        <label for="name">Nama Lengkap</label>
+        <input type="text" name="name" placeholder="Nama Lengkap" required />
+
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="Email" required />
+
+        <label for="password">Kata Sandi</label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+
+        <label for="confirm-password">Konfirmasi Kata Sandi</label>
+        <input
+          type="password"
+          name="confirm-password"
+          placeholder="Ulangi kata sandi"
+          required
+        />
+
+        <button type="submit">Daftar</button>
+        <p class="register-link">
+          Sudah punya akun?
+          <a style="color: blue" href="Login.html">Login di sini</a>
+        </p>
+      </form>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

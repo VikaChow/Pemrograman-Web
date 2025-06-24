@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Glowery</title>
+    <link rel="stylesheet" href="assets/css/checkout.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">
+        <a href="Home.html">
+          <img src="assets/images/logo/Logo.png" alt="Growely Logo" />
+        </a>
+      </div>
+    </header>
+
+    <a href="Home.html" class="back-button">← Kembali ke Home</a>
+
+    <main class="checkout-container">
+      <h2>Checkout</h2>
+
+      <form id="checkout-form">
+        <section class="cart-summary">
+          <h3>Ringkasan Belanja</h3>
+          <div id="checkout-cart-items"></div>
+          <p class="total">Total: <span id="checkout-total">Rp0</span></p>
+        </section>
+
+        <section class="shipping-form">
+          <h3>Informasi Pengiriman</h3>
+
+          <label for="name">Nama Lengkap</label>
+          <input type="text" id="name" required />
+
+          <label for="phone">Nomor Telepon</label>
+          <input type="tel" id="phone" required />
+
+          <label for="address">Alamat Lengkap</label>
+          <textarea id="address" required></textarea>
+
+          <label for="city">Kota</label>
+          <input type="text" id="city" required />
+
+          <label for="postal_code">Kode Pos</label>
+          <input type="text" id="postal_code" required />
+        </section>
+
+        <section class="payment-method">
+          <h3>Metode Pembayaran</h3>
+          <label for="payment">Pilih Metode</label>
+          <select id="payment" required>
+            <option value="">-- Pilih Metode Pembayaran --</option>
+            <option value="transfer">Transfer Bank</option>
+            <option value="cod">Cash on Delivery (COD)</option>
+            <option value="ewallet">E-Wallet (OVO, DANA, dll)</option>
+          </select>
+        </section>
+
+        <button type="button" id="confirm-order">Konfirmasi & Bayar</button>
+      </form>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Growely. Belanja dengan percaya diri.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/checkout.js"></script>
+  </body>
+</html>

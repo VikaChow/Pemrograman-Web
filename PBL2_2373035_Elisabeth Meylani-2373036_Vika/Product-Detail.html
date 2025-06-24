@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Glowery</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/product-detail.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">
+        <a href="Home.html">
+          <img src="assets/images/logo/Logo.png" alt="Growely Logo" />
+        </a>
+      </div>
+
+      <nav class="nav-links" role="navigation" aria-label="Main menu">
+        <a href="Home.html" class="nav-item">NEW</a>
+
+        <div class="dropdown" tabindex="0" aria-haspopup="true">
+          <button
+            class="dropbtn"
+            aria-controls="dropdown-face"
+            aria-expanded="false"
+          >
+            FACE
+          </button>
+          <div
+            class="dropdown-content"
+            id="dropdown-face"
+            role="menu"
+            aria-label="FACE submenu"
+          >
+            <a
+              href="Product.html?category=face&subcategory=blush_on"
+              role="menuitem"
+              >Blush On</a
+            >
+            <a
+              href="Product.html?category=face&subcategory=concealer"
+              role="menuitem"
+              >Concealer</a
+            >
+            <a
+              href="Product.html?category=face&subcategory=contour"
+              role="menuitem"
+              >Contour</a
+            >
+            <a
+              href="Product.html?category=face&subcategory=foundation"
+              role="menuitem"
+              >Foundation</a
+            >
+            <a
+              href="Product.html?category=face&subcategory=highlighter"
+              role="menuitem"
+              >Highlighter</a
+            >
+            <a
+              href="Product.html?category=face&subcategory=powder"
+              role="menuitem"
+              >Powder</a
+            >
+          </div>
+        </div>
+
+        <div class="dropdown" tabindex="0" aria-haspopup="true">
+          <button
+            class="dropbtn"
+            aria-controls="dropdown-eyes"
+            aria-expanded="false"
+          >
+            EYES
+          </button>
+          <div
+            class="dropdown-content"
+            id="dropdown-eyes"
+            role="menu"
+            aria-label="EYES submenu"
+          >
+            <a
+              href="Product.html?category=eyes&subcategory=eyebrow"
+              role="menuitem"
+              >Eyebrow</a
+            >
+            <a
+              href="Product.html?category=eyes&subcategory=eyeliner"
+              role="menuitem"
+              >Eyeliner</a
+            >
+            <a
+              href="Product.html?category=eyes&subcategory=eye_pallete"
+              role="menuitem"
+              >Eye Pallete</a
+            >
+            <a
+              href="Product.html?category=eyes&subcategory=eyeshadow"
+              role="menuitem"
+              >Eyeshadow</a
+            >
+            <a
+              href="Product.html?category=eyes&subcategory=mascara"
+              role="menuitem"
+              >Mascara</a
+            >
+          </div>
+        </div>
+
+        <div class="dropdown" tabindex="0" aria-haspopup="true">
+          <button
+            class="dropbtn"
+            aria-controls="dropdown-lips"
+            aria-expanded="false"
+          >
+            LIPS
+          </button>
+          <div
+            class="dropdown-content"
+            id="dropdown-lips"
+            role="menu"
+            aria-label="LIPS submenu"
+          >
+            <a
+              href="Product.html?category=lips&subcategory=lip_balm"
+              role="menuitem"
+              >Lip Balm</a
+            >
+            <a
+              href="Product.html?category=lips&subcategory=lip_gloss"
+              role="menuitem"
+              >Lip Gloss</a
+            >
+            <a
+              href="Product.html?category=lips&subcategory=lip_liquid"
+              role="menuitem"
+              >Lip Liquid</a
+            >
+            <a
+              href="Product.html?category=lips&subcategory=lip_pallate"
+              role="menuitem"
+              >Lip Pallete</a
+            >
+            <a
+              href="Product.html?category=lips&subcategory=lip_pencil"
+              role="menuitem"
+              >Lip Pencil</a
+            >
+            <a
+              href="Product.html?category=lips&subcategory=lipstik"
+              role="menuitem"
+              >Lipstik</a
+            >
+          </div>
+        </div>
+
+        <div class="dropdown" tabindex="0" aria-haspopup="true">
+          <button
+            class="dropbtn"
+            aria-controls="dropdown-skin"
+            aria-expanded="false"
+          >
+            SKIN
+          </button>
+          <div
+            class="dropdown-content"
+            id="dropdown-skin"
+            role="menu"
+            aria-label="SKIN submenu"
+          >
+            <a
+              href="Product.html?category=skin&subcategory=cleanser"
+              role="menuitem"
+              >Cleanser</a
+            >
+            <a
+              href="Product.html?category=skin&subcategory=setting_spray"
+              role="menuitem"
+              >Setting Spray</a
+            >
+          </div>
+        </div>
+      </nav>
+
+      <form id="search-form">
+        <input id="search-input" type="text" placeholder="Cari produk..." />
+        <button id="search-button" type="submit">Cari</button>
+      </form>
+
+      <div class="top-icons" role="region" aria-label="User actions">
+        <button class="icon-btn" id="wishlist-btn" aria-label="Wishlist">
+          ❤️ <span class="badge" id="wishlist-count">0</span>
+        </button>
+        <button class="icon-btn" id="cart-btn" aria-label="Keranjang Belanja">
+          🛒 <span class="badge" id="cart-count">0</span>
+        </button>
+        <button class="icon-btn" id="profile-btn" aria-label="Profil Pengguna">
+          👤
+        </button>
+      </div>
+    </div>
+
+    <button
+      title="Kembali"
+      class="back-button"
+      aria-label="Kembali"
+      onclick="history.back()"
+    >
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+
+    <div class="detail-page">
+      <div class="detail-image">
+        <img id="product-image" src="" alt="Gambar Produk" />
+      </div>
+      <div class="detail-content">
+        <div id="product-stock"></div>
+        <h1 id="product-name"></h1>
+        <p id="product-description"></p>
+        <p class="price" id="product-price"></p>
+        <div class="detail-actions">
+          <button class="wishlist-btn">Tambah ke Wishlist</button>
+          <button class="cart-btn">Tambah ke Keranjang</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="wishlist-modal" class="modal">
+      <div class="modal-content">
+        <h2>Wishlist</h2>
+        <div id="wishlist-items"></div>
+      </div>
+    </div>
+
+    <div id="cart-modal" class="modal">
+      <div class="modal-content">
+        <h2>Keranjang</h2>
+        <div id="cart-items"></div>
+        <div class="cart-actions">
+          <button id="checkout-btn">Checkout</button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="profile-modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="profile-title"
+    >
+      <div class="modal-content">
+        <h2 id="profile-title">Profil Pengguna</h2>
+        <p><strong>Nama:</strong> <span id="user-name">-</span></p>
+        <p><strong>Email:</strong> <span id="user-email">-</span></p>
+
+        <h3>Ganti Kata Sandi</h3>
+        <form
+          id="change-password-form"
+          method="POST"
+          action="assets/php/change-password.php"
+        >
+          <label for="current-password">Kata Sandi Saat Ini</label>
+          <input
+            type="password"
+            id="current-password"
+            name="current_password"
+            required
+          />
+
+          <label for="new-password">Kata Sandi Baru</label>
+          <input
+            type="password"
+            id="new-password"
+            name="new_password"
+            required
+          />
+
+          <label for="confirm-new-password">Konfirmasi Kata Sandi Baru</label>
+          <input
+            type="password"
+            id="confirm-new-password"
+            name="confirm_new_password"
+            required
+          />
+
+          <button type="submit">Ganti Password</button>
+        </form>
+        <button id="my-orders-btn">Pesanan Saya</button>
+
+        <div id="user-orders-modal" class="hidden">
+          <button id="user-orders-close">Tutup</button>
+          <div id="user-orders-container"></div>
+        </div>
+
+        <button id="logout-btn">Logout</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2025 Growely. Dibuat dengan cinta untuk kecantikan Indonesia.
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/product-detail.js"></script>
+  </body>
+</html>

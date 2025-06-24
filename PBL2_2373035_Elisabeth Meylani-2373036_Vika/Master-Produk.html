@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glowery</title>
+    <link rel="stylesheet" href="assets/css/master-produk.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <h2>Growely</h2>
+      <nav>
+        <a href="Home-Admin.html">Dashboard</a>
+        <a href="Master-Produk.html" class="active">Daftar Produk</a>
+        <a href="Banner.html">Banner</a>
+        <a href="Pesanan.html">Pesanan</a>
+        <a href="#" id="logout-btn">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="container">
+      <h2>Daftar Produk</h2>
+
+      <div class="button-left">
+        <a href="Tambah-Produk.html">
+          <button type="button">Tambah Produk</button>
+        </a>
+      </div>
+
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Cari produk..." />
+      </div>
+
+      <div class="rows-per-page-container">
+        <label for="rowsPerPage">Tampilkan:</label>
+        <select id="rowsPerPage">
+          <option value="5" selected>5 baris</option>
+          <option value="10">10 baris</option>
+          <option value="15">15 baris</option>
+        </select>
+      </div>
+
+      <table border="1" id="productTable">
+        <thead>
+          <tr>
+            <th class="sortable" data-col="nama">Nama</th>
+            <th class="sortable" data-col="harga">Harga</th>
+            <th class="sortable" data-col="stok">Stok</th>
+            <th>Kategori</th>
+            <th>Subkategori</th>
+            <th class="sortable" data-col="expired">Expired</th>
+            <th>Deskripsi</th>
+            <th>Gambar</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <div class="pagination">
+        <button id="prevPage">Sebelumnya</button>
+        <span id="pageIndicator">Halaman 1</span>
+        <button id="nextPage">Berikutnya</button>
+      </div>
+    </main>
+
+    <div class="modal" id="editModal" role="dialog" aria-modal="true">
+      <div class="modal-content">
+        <span id="closeModal" title="Tutup Modal" class="close-modal"
+          >&times;</span
+        >
+        <h2>Edit Produk</h2>
+
+        <form id="editForm" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="edit_nama">Nama Produk:</label>
+            <input type="text" name="nama" id="edit_nama" required />
+          </div>
+
+          <div class="form-group">
+            <label for="edit_harga">Harga:</label>
+            <input type="number" name="harga" id="edit_harga" required />
+          </div>
+
+          <div class="form-group">
+            <label for="edit_stok">Stok:</label>
+            <input type="number" name="stok" id="edit_stok" required />
+          </div>
+
+          <div class="form-group">
+            <label for="edit_kategori">Kategori:</label>
+            <select name="kategori" id="edit_kategori" required>
+              <option value="">-- Pilih Kategori --</option>
+              <option value="face">Face</option>
+              <option value="eyes">Eyes</option>
+              <option value="lips">Lips</option>
+              <option value="skin">Skin</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="edit_subkategori">Subkategori:</label>
+            <select
+              name="subkategori"
+              id="edit_subkategori"
+              required
+              style="display: none"
+            >
+              <option value="">-- Pilih Subkategori --</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="edit_expired">Tanggal Kedaluwarsa:</label>
+            <input type="date" id="edit_expired" name="expired" />
+          </div>
+
+          <div class="form-group">
+            <label for="edit_deskripsi">Deskripsi:</label>
+            <textarea name="deskripsi" id="edit_deskripsi" rows="4"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="edit_gambar">Gambar Baru:</label>
+            <input
+              type="file"
+              name="gambar"
+              id="edit_gambar"
+              accept="image/*"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Gambar Saat Ini:</label>
+            <img
+              src="assets/images/products/no-image.png"
+              alt="Gambar Saat Ini"
+              id="currentImage"
+              width="100"
+              style="display: none"
+            />
+          </div>
+
+          <div class="form-group">
+            <button type="submit">Simpan Perubahan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/master-produk.js"></script>
+  </body>
+</html>

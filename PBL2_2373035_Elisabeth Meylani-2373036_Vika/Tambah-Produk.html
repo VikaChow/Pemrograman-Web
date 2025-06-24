@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glowery</title>
+    <link rel="stylesheet" href="assets/css/tambah-produk.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>Growely</h2>
+      <a href="Home-Admin.html">Dashboard</a>
+      <a href="Master-Produk.html">Daftar Produk</a>
+      <a href="Banner.html">Banner</a>
+      <a href="Pesanan.html">Pesanan</a>
+      <a href="#" id="logout-btn">Logout</a>
+    </div>
+
+    <div class="container">
+      <h1>Master Data Produk</h1>
+
+      <form id="productForm" enctype="multipart/form-data">
+        <input type="hidden" id="productId" name="productId" />
+
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Nama Produk"
+          required
+        />
+        <input
+          type="number"
+          id="price"
+          name="price"
+          placeholder="Harga"
+          required
+        />
+        <input
+          type="number"
+          id="stock"
+          name="stock"
+          placeholder="Stok Produk"
+          required
+        />
+
+        <select id="category" name="category" required>
+          <option value="">-- Pilih Kategori --</option>
+          <option value="face">Face</option>
+          <option value="eyes">Eyes</option>
+          <option value="lips">Lips</option>
+          <option value="skin">Skin</option>
+        </select>
+
+        <select
+          id="subcategory"
+          name="subcategory"
+          required
+          style="display: none"
+        >
+          <option value="">-- Pilih Subkategori --</option>
+        </select>
+
+        <input type="date" id="expire_at" name="expire_at" required />
+        <textarea
+          id="description"
+          name="description"
+          placeholder="Deskripsi"
+          required
+        ></textarea>
+        <input type="file" id="image" name="image" accept="image/*" />
+
+        <button type="submit">Simpan</button>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/tambah-produk.js"></script>
+  </body>
+</html>
