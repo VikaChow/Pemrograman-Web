@@ -37,6 +37,7 @@ if (!is_array($cart_items) || count($cart_items) === 0) {
 $conn->begin_transaction();
 
 try {
+    // Awal Pake AI
     // 1. Simpan order
     $stmt = $conn->prepare("INSERT INTO orders (user_id, total_price) VALUES (?, ?)");
     $stmt->bind_param("id", $user_id, $total_price);
@@ -52,6 +53,7 @@ try {
         $product_id = $item['product_id'];
         $quantity   = $item['quantity'];
         $price      = $item['price'];
+        // Akhir Pake AI
 
         // Simpan order item
         $stmt_item->bind_param("iiid", $order_id, $product_id, $quantity, $price);

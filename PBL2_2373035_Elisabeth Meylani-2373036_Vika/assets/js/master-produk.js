@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
+  // Awal Pake AI
   searchInput.addEventListener("input", function () {
     const keyword = this.value.toLowerCase();
     if (keyword === "") {
@@ -135,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
       updateTableRows();
     }
   });
+  // Akhir Pake AI
 
   window.editProduct = function(id) {
     fetch(`assets/php/master-produk.php?action=edit&id=${id}`)

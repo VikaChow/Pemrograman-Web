@@ -344,6 +344,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   };
   
+  // Awal Pake AI
   // untuk slide banner
   const setupBannerSlider = () => {
     const slider = document.getElementById("slider");
@@ -381,6 +382,7 @@ document.addEventListener("DOMContentLoaded", function() {
     updateSlider();
     startAutoSlide();
   };
+  // Akhir Pale AI
   
   // untuk checkout
   checkoutBtn?.addEventListener("click", async () => {
@@ -431,6 +433,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
   
+  // Awal Pake AI
   // untuk pencarian produk
   const searchInput = document.getElementById("search-input");
   const searchButton = document.getElementById("search-button");
@@ -454,6 +457,8 @@ document.addEventListener("DOMContentLoaded", function() {
       Swal.fire("Info", "Masukkan kata kunci.", "info");
     }
   });
+
+  // Akhir Pake AI
 
   updateWishlistCount();
   updateCartCount();

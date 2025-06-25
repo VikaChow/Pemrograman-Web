@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async function () {
-  // === ELEMENT REFERENCES ===
+  
   const ids = {
     wishlistCount: document.getElementById("wishlist-count"),
     cartCount: document.getElementById("cart-count"),
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const param = new URLSearchParams(window.location.search);
   const productId = param.get("id");
 
-  // === UTILITY ===
+  
   const openModal = (modal) => (modal.style.display = "block");
   const closeModal = (modal) => (modal.style.display = "none");
 
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
   }
 
-  // === COUNTS ===
+ 
   async function updateWishlistCount() {
     const data = await fetchJSON("assets/php/count-wishlist.php");
     ids.wishlistCount.textContent = data?.count || 0;
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (cartBtn) cartBtn.dataset.stock = data.stock;
   }
 
-  // === MODALS ===
+  
   async function loadWishlist() {
     const data = await fetchJSON("assets/php/get-wishlist.php");
     const container = document.getElementById("wishlist-items");
@@ -144,7 +144,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     ids.userOrdersModal.classList.remove("hidden");
   }
 
-  // === EVENTS ===
   ids.wishlistBtn?.addEventListener("click", loadWishlist);
   ids.cartBtn?.addEventListener("click", loadCart);
   ids.profileBtn?.addEventListener("click", loadProfile);
@@ -219,6 +218,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (e.target === ids.userOrdersModal) ids.userOrdersModal.classList.add("hidden");
   });
 
+  // Awak Pake AI
   // === SEARCH ===
   const searchInput = document.getElementById("search-input");
   const searchButton = document.getElementById("search-button");
@@ -242,8 +242,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       Swal.fire("Info", "Masukkan kata kunci.", "info");
     }
   });
+  // Akhir Pake AI
 
-  // === INIT ===
   await updateWishlistCount();
   await updateCartCount();
   await loadProductDetail();

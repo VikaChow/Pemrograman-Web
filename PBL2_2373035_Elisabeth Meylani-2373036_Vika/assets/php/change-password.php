@@ -69,9 +69,8 @@ function alertAndRedirect($msg, $icon, $redirect) {
     exit;
 }
 
-// =====================
+
 // VALIDASI
-// =====================
 if (empty($current_password) || empty($new_password) || empty($confirm_new_password)) {
     alertAndBack('Semua field harus diisi.');
 }
@@ -80,9 +79,9 @@ if ($new_password !== $confirm_new_password) {
     alertAndBack('Konfirmasi kata sandi baru tidak sesuai.');
 }
 
-// =====================
+
 // CEK PASSWORD LAMA
-// =====================
+
 $stmt = $conn->prepare("SELECT password_hash FROM users WHERE id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -98,9 +97,9 @@ if (!password_verify($current_password, $user['password_hash'])) {
     alertAndBack('Kata sandi lama salah.', 'error');
 }
 
-// =====================
+
 // UPDATE PASSWORD
-// =====================
+
 $new_password_hash = password_hash($new_password, PASSWORD_DEFAULT);
 
 $update = $conn->prepare("UPDATE users SET password_hash = ? WHERE id = ?");

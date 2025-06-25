@@ -114,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Awal Pake AI
   // Search
   document.getElementById("searchInput").addEventListener("input", function () {
     const keyword = this.value.toLowerCase();
@@ -164,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
       sortedRows.forEach(row => tbody.appendChild(row));
     });
   });
+  // Akhir Pake AI
 
   // Modal close
   const closeBtn = document.querySelector(".close-btn");

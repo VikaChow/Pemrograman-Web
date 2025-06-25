@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", async function () {
-  // --------------------------------------------------
-  // ELEMENT REFERENCES
-  // --------------------------------------------------
   const wishlistCountEl = document.getElementById("wishlist-count");
   const cartCountEl = document.getElementById("cart-count");
   const wishlistModal = document.getElementById("wishlist-modal");
@@ -24,9 +21,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   const subcategory = params.get("subcategory");
   const keyword = params.get("search");
 
-  // --------------------------------------------------
-  // UTILITY FUNCTION
-  // --------------------------------------------------
   function openModal(modal) {
     modal.style.display = "block";
   }
@@ -37,9 +31,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     return text.length <= maxCharacters ? text : text.slice(0, maxCharacters) + "...";
   }
 
-  // --------------------------------------------------
-  // API UTILITY
-  // --------------------------------------------------
   async function fetchJSON(url, options = {}) {
     try {
       const res = await fetch(url, options);
@@ -58,9 +49,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
   }
 
-  // --------------------------------------------------
-  // COUNTERS
-  // --------------------------------------------------
   async function updateWishlistCount() {
     const data = await fetchJSON("assets/php/count-wishlist.php");
     wishlistCountEl.textContent = data?.count || 0;
@@ -71,9 +59,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     cartCountEl.textContent = data?.count || 0;
   }
 
-  // --------------------------------------------------
-  // MODALS HANDLERS
-  // --------------------------------------------------
   async function loadWishlist() {
     const data = await fetchJSON("assets/php/get-wishlist.php");
     const container = document.getElementById("wishlist-items");
@@ -158,9 +143,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
-  // --------------------------------------------------
-  // PRODUK LISTING
-  // --------------------------------------------------
+
   async function loadProducts(category, subcategory, keyword) {
   const titleEl = document.getElementById("product-title");
   const listEl = document.getElementById("product-list");
@@ -215,9 +198,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 }
 
-  // --------------------------------------------------
-  // EVENT LISTENERS
-  // --------------------------------------------------
+
   wishlistBtn?.addEventListener("click", loadWishlist);
   cartBtn?.addEventListener("click", loadCart);
   profileBtn?.addEventListener("click", loadProfile);
@@ -241,9 +222,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   });
 
-  // --------------------------------------------------
-  // DELEGATION HANDLERS
-  // --------------------------------------------------
+
   document.addEventListener("click", async e => {
     const target = e.target;
 
@@ -341,9 +320,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   });
 
-  // ==================================================
-  // SEARCH BUTTON
-  // ==================================================
+  // Awal Pake AI
   const searchInput = document.getElementById("search-input");
   const searchButton = document.getElementById("search-button");
   const searchForm = document.getElementById("search-form");
@@ -366,17 +343,13 @@ document.addEventListener("DOMContentLoaded", async function () {
       Swal.fire("Info", "Masukkan kata kunci.", "info");
     }
   });
+  // Akhir Pake AI
 
-  // --------------------------------------------------
-  // INITIALIZATION
-  // --------------------------------------------------
   await updateWishlistCount();
   await updateCartCount();
   await loadProducts(category, subcategory, keyword);
 
-  // --------------------------------------------------
-  // WINDOW LISTENERS
-  // --------------------------------------------------
+
   window.addEventListener("click", (e) => {
     if (e.target === wishlistModal) closeModal(wishlistModal);
     if (e.target === cartModal) closeModal(cartModal);
